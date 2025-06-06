@@ -1,16 +1,17 @@
 <?php
-class movie
+class movie extends genres
 {
     public $nome;
     public $anno;
     public $regista;
 
     //costruttrore per movie
-    public function __construct($nome, $anno, $regista)
+    public function __construct($nome, $anno, $regista, genres $genres)
     {
         $this->nome = $nome;
         $this->anno = $anno;
         $this->regista = $regista;
+        $this->genres = $genres;
     }
     //metodo per ottenere nome
     public function getNomeFilm($nome)
@@ -18,11 +19,23 @@ class movie
         return $nome;
     }
 }
+class genres
+{
+    public $genres;
+    public function __construct($genres)
+    {
+        $this->genres = $genres;
+    }
+}
 
-$spiderman = new movie("Spiderman", "2020", "Peter Griffin");
-$batman = new movie("Batman", "2024", "Homer Simpson");
+$spidermanGenre = new genres("drammatic");
+$batmanGenre = new genres("horror");
 
-?>
+$spiderman = new movie("Spiderman", "2020", "Peter Griffin", $spidermanGenre);
+$batman = new movie("Batman", "2024", "Homer Simpson", $batmanGenre);
+
+var_dump($spiderman)
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
